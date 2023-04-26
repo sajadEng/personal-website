@@ -6,6 +6,9 @@
 	div.profile-div div.about-me-div a.about-me-a {
 		max-width: 75px;
 	}
+	div.content-div-title-container {
+		width: 100%;
+	}
 	div.content-div {
 		width: 100%;
 	}
