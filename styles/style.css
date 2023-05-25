@@ -1,8 +1,8 @@
 :root {
-	--bg1: rgba(30,30,30,0.5);
+	--bg1: rgba(30,30,30,0);
 	--bg2: rgba(20,20,20,0.0);
-	--bg3: linear-gradient(rgba(0,0,0,1),rgba(30,00,20,0.5));
-	--wbg3: lrgba(250,250,250,1);
+	--bg3: rgb(20,20,20);
+	--wbg3: rgba(250,250,250,1);
 	--bg4: rgba(30,00,20,1);
 	--fg1: rgb(230,230,230);
 	--fg2: rgb(30,30,30);
@@ -18,6 +18,7 @@ body {
 	align-content: center;
 	margin-top: 150px;
 	margin-bottom: 50px;
+	background: black;
 }
 
 
@@ -60,7 +61,7 @@ div.profile-div {
 	margin-top: 100px;
 }
 div.profile-div img {
-	width: 100px;
+	width: 150px;
 	object-position: center;
 	object-fit: cover;
 	border-radius: 50%;
@@ -75,6 +76,7 @@ div.profile-div div.about-me-div {
 	display: flex;
 	column-gap: 20px;
 	border-radius: 2px;
+	border-top: 3px green solid;
 }
 div.profile-div div.about-me-div a.about-me-a {
 	color: var(--fg1);
@@ -164,4 +166,62 @@ footer div.footer-container div a.clock-icon::before {
 	content: '\23f1';
 	color: white;
 	background: black;
+}
+
+
+
+
+/* progress */
+div.progreses-container {
+	position: relative;
+	margin-top: 90px;
+	width: 70%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+/*	grid-template-rows: repeat(2, 50px);*/
+/*	justify-content: center;*/
+	justify-items: center;
+	row-gap: 30px;
+/*	border-top: 2px whitesmoke solid;*/
+	padding: 20px 5px;
+	background: rgb(30, 30, 30);
+}
+h1.progress-div-title {
+	position: absolute;
+	top: -100px;
+	left: 5px;
+	font-size: 3rem;
+	color: white;
+}
+div.to-do {
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+	column-gap: 20px;
+	width: fit-content;
+}
+div.progress-div {
+	position: relative;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background: conic-gradient(royalblue 0deg, #fff 0deg);
+}
+div.progress-bar {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	background: black;
+	width: 75px;
+	height: 75px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+}
+p.progress-title {
+	font-size: 1.5rem;
+	font-weight: bold;
 }
