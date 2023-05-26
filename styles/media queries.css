@@ -15,18 +15,46 @@
 	div.progreses-container {
 		width: 100%;
 	}
+	.fav-musix {
+		width: 100%;
+	}
 }
 @media only screen and (max-width: 420px) {
 	div.profile-div div.about-me-div a.about-me-a {
 		max-width: 60px;
 	}
-
+	p.content-div-title {
+		font-size: 1.6rem;
+	}
 	div.content-div div.content {
 		padding: 5px;
 	}
 	div.content-div div.content p.content-title {
 		font-size: 1.5rem;
 		margin-bottom: 5px;
+	}
+
+		/* progress	*/
+	div.progress-div {
+		width: 80px;
+		height: 80px;
+	}
+	div.progress-bar {
+		width: 70px;
+		height: 70px;
+	}
+	h1.progress-div-title {
+		font-size: 1.6rem;
+		top: -55px;
+	}
+	p.progress-title {
+		font-size: 1rem;
+	}
+
+		/* fav musix */
+	.fav-musix-title {
+		font-size: 1.6rem;
+		top: -55px;
 	}
 }
 @media only screen and (max-width: 400px) {
