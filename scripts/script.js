@@ -73,7 +73,11 @@ function darkMode() {
 			document.querySelectorAll('a.content-link')[i].style.color = 'var(--fg2)';
 			document.querySelectorAll('div.content')[i].style.background = 'var(--wbg3)';
 			document.querySelectorAll('div.content')[i].style.borderBottom = '3px darkred solid';
-			}
+		}
+		document.querySelector('.fav-musix-title').style.color = 'var(--fg2)';
+		document.querySelectorAll('.musix').forEach(musicDiv => {
+			musicDiv.children[0].style.color = 'var(--fg2)';
+		})
 		darkModeBtn.innerHTML = "WM";
 		console.log('ee');
 		} else {
@@ -93,6 +97,10 @@ function darkMode() {
 				document.querySelectorAll('div.content')[i].style.background = 'var(--bg3)';
 				document.querySelectorAll('div.content')[i].style.borderBottom = '0px darkred solid';
 			}
+			document.querySelector('.fav-musix-title').style.color = 'var(--fg1)';
+			document.querySelectorAll('.musix').forEach(musicDiv => {
+				musicDiv.children[0].style.color = 'var(--fg1)';
+			})
 			darkModeBtn.innerHTML = "DM";
 			console.log('ww');
 		}
