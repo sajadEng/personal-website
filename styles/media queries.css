@@ -1,7 +1,6 @@
 @media only screen and (max-width: 530px) {
-	div.container {
-		padding-left: 20px;
-		padding-right: 20px;
+	body {
+		margin-top: 5px;
 	}
 	div.profile-div div.about-me-div a.about-me-a {
 		max-width: 75px;
