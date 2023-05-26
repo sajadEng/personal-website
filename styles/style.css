@@ -308,6 +308,7 @@ p.progress-title {
 	margin: 0;
 	height: 20px;
 	overflow: hidden;
+	font-weight: bold;
 }
 audio {
 	background: rgb(30, 30, 0);
