@@ -105,3 +105,67 @@ function darkMode() {
 }
 
 darkModeBtn.addEventListener('click',darkMode);
+
+
+// hover & active effect
+
+
+	// links hover
+const linkHoverColor = 'royalblue';
+projectsLinks.forEach(linkElement => {
+	linkElement.addEventListener('pointerenter', event =>{
+		event.target.style.color = linkHoverColor;
+		console.table(event);
+	})
+	linkElement.addEventListener('pointerout', event =>{
+		const linkMainColor = (darkModeBtn.innerHTML == 'WM')? 'rgb(30,30,30)' : 'whitesmoke';
+		event.target.style.color = linkMainColor;
+		console.table(event);
+	})
+})
+
+
+	// progress bars hover
+	
+	document.querySelectorAll('div.progress-div').forEach(progressDivElement => {
+		progressDivElement.addEventListener('pointerenter', event => {addAnimationToProgressTitle(event)});
+		progressDivElement.addEventListener('pointerout', event => { removeAnimationToProgressTitle(event)});
+	})
+
+function addAnimationToProgressTitle(event) {
+	let progressDivElement = event.target;
+	if (darkModeBtn.innerHTML == 'WM') {
+		progressDivElement.classList.add('fire-anim-1');
+		progressDivElement.classList.remove('fire-anim-2');
+	} else {
+		progressDivElement.classList.add('fire-anim-2');
+		progressDivElement.classList.remove('fire-anim-1');
+	}
+	progressDivElement.children[0].classList.add('paint-anim');
+}
+
+function removeAnimationToProgressTitle(event) {
+	let progressDivElement = event.target;
+	progressDivElement.classList.remove('fire-anim-2');
+	progressDivElement.classList.remove('fire-anim-1');
+	progressDivElement.children[0].classList.remove('paint-anim');
+}
+
+
+
+
+
+
+// fav musix
+	document.querySelectorAll('audio').forEach(audioElement => {
+		audioElement.addEventListener('play', event => {
+			// event.target.style.background = 'none';
+			event.target.parentElement.style.borderLeftColor = 'royalblue';
+			// event.target.previousElementSibling.style.color = 'rgb(30,30,30)';
+		})
+		audioElement.addEventListener('pause', event => {
+			// event.target.style.background = 'rgb(30,30,30)';
+			event.target.parentElement.style.borderLeftColor = 'darkred';
+			// event.target.previousElementSibling.style.color = 'unset';
+		})
+	})
