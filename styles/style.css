@@ -11,7 +11,23 @@
 	--first-fire-anim-color-2: yellow;
 	--last-fire-anim-color-1: red;
 	--last-fire-anim-color-2: yellow;
+	/* dark	*/
+	--dark-body-bg: #000000;
+	--dark-containers-bg: rgb(30,30,30);
+	--dark-footer-bg: #3D0000;
+	--dark-fg: #FFF;
+	--dark-main-border-color: #950101;
+	--dark-playing-border-color: #FF0000;
+
+	/* light */
+	--light-fg:#000;
 }
+/*
+	#000000
+	#3D0000
+	#950101
+	#FF0000
+*/
 * {
 	color: var(--fg1);
 	transition: all 150ms;
@@ -127,7 +143,7 @@ p.content-div-title {
 	font-weight: bold;
 	margin: 0;
 	padding: 0;
-	border-bottom: 3px darkred solid;
+	border-bottom: 3px var(--dark-main-border-color) solid;
 	width: calc(11ch - 0.5rem);
 }
 div.content {
@@ -146,7 +162,7 @@ div.content p.content-title {
 
 
 footer {
-	background: var(--bg4);
+	background: var(--dark-footer-bg);
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -170,7 +186,7 @@ footer div.footer-container div p {
 footer div.footer-container div a.clock-icon::before {
 	content: '\23f1';
 	color: white;
-	background: black;
+	background: none;
 }
 
 
@@ -189,7 +205,7 @@ div.progreses-container {
 	row-gap: 30px;
 /*	border-top: 2px whitesmoke solid;*/
 	padding: 20px 5px;
-	background: rgb(30, 30, 30);
+	background: var(--dark-containers-bg);
 }
 h1.progress-div-title {
 	position: absolute;
@@ -197,7 +213,7 @@ h1.progress-div-title {
 	left: 0;
 	font-size: 2.3rem;
 	color: white;
-	border-bottom: 3px darkred solid;
+	border-bottom: 3px var(--dark-main-border-color) solid;
 	width: calc(9ch - 0.5rem);
 }
 div.to-do {
@@ -293,14 +309,14 @@ p.progress-title {
 	top: -75px;
 	left: -5px;
 	width: calc(19ch - 2rem);
-	border-bottom: 3px darkred solid;
+	border-bottom: 3px var(--dark-main-border-color) solid;
 	font-size: 2.3rem;
 }
 .musix {
 	display: flex;
 	flex-direction: column;
 	row-gap: 10px;
-	border-left: 3px darkred solid;
+	border-left: 3px var(--dark-main-border-color) solid;
 	width: 100%;
 	padding: 5px 0px 5px 5px;
 }
@@ -314,4 +330,5 @@ audio {
 	background: rgb(30, 30, 0);
 	border-radius: 50px;
 	margin: 0;
+	width: 100%;
 }

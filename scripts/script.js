@@ -72,54 +72,54 @@ function darkMode() {
 			document.querySelectorAll('p.content-title')[i].style.color = 'var(--fg2)';
 			document.querySelectorAll('a.content-link')[i].style.color = 'var(--fg2)';
 			document.querySelectorAll('div.content')[i].style.background = 'var(--wbg3)';
-			document.querySelectorAll('div.content')[i].style.borderBottom = '3px darkred solid';
+			document.querySelectorAll('div.content')[i].style.borderBottom = '3px var(--dark-main-border-color) solid';
 		}
 		document.querySelector('.fav-musix-title').style.color = 'var(--fg2)';
 		document.querySelectorAll('.musix').forEach(musicDiv => {
-			musicDiv.children[0].style.color = 'var(--fg2)';
+			musicDiv.children[0].style.color = (musicDiv.children[1].paused)? 'var(--light-fg)': 'var(--dark-playing-border-color)';
 		})
 		darkModeBtn.innerHTML = "WM";
 		console.log('ee');
 		} else {
-			body.style.background = 'black';
-			darkModeBtn.style.color = 'var(--fg1)';
-			document.querySelector('h1.my-name').style.color = 'var(--fg1)';
-			document.querySelector('p.content-div-title').style.color = 'var(--fg1)';
-			document.querySelector('p.my-bio').style.color = 'var(--fg2)';
-			document.querySelector('h1.progress-div-title').style.color = 'var(--fg1)';
-			document.querySelector('div.progreses-container').style.background = 'rgb(30,30,30)';
+			body.style.background = 'var(--dark-body-bg)';
+			darkModeBtn.style.color = 'var(--dark-containers-bg)';
+			document.querySelector('h1.my-name').style.color = 'var(--dark-fg)';
+			document.querySelector('p.content-div-title').style.color = 'var(--dark-fg)';
+			document.querySelector('p.my-bio').style.color = 'var(--dark-fg)';
+			document.querySelector('h1.progress-div-title').style.color = 'var(--dark-fg)';
+			document.querySelector('div.progreses-container').style.background = 'var(--dark-containers-bg)';
 			document.querySelectorAll('p.progress-title').forEach( pText => {
 				pText.style.color = 'var(--fg1)';
 			})
 			for (let i = 0; i < document.querySelectorAll('p.content-title').length; i++) {
-				document.querySelectorAll('p.content-title')[i].style.color = 'var(--fg1)';
-				document.querySelectorAll('a.content-link')[i].style.color = 'var(--fg1)';
+				document.querySelectorAll('p.content-title')[i].style.color = 'var(--dark-fg)';
+				document.querySelectorAll('a.content-link')[i].style.color = 'var(--dark-fg)';
 				document.querySelectorAll('div.content')[i].style.background = 'var(--bg3)';
-				document.querySelectorAll('div.content')[i].style.borderBottom = '0px darkred solid';
+				document.querySelectorAll('div.content')[i].style.borderBottom = '0px var(--dark-main-border-color) solid';
 			}
-			document.querySelector('.fav-musix-title').style.color = 'var(--fg1)';
+			document.querySelector('.fav-musix-title').style.color = 'var(--dark-fg)';
 			document.querySelectorAll('.musix').forEach(musicDiv => {
-				musicDiv.children[0].style.color = 'var(--fg1)';
+				musicDiv.children[0].style.color = (musicDiv.children[1].paused)? 'var(--dark-fg)': 'var(--dark-playing-border-color)';
 			})
 			darkModeBtn.innerHTML = "DM";
 			console.log('ww');
 		}
 		if (dmcounter % 2 === 0) {
-			document.querySelector('.my-bio').style.color = 'var(--fg2)';
+			document.querySelector('.my-bio').style.color = 'var(--light-fg)';
 		} else {
-			document.querySelector('.my-bio').style.color = 'var(--fg1)';
+			document.querySelector('.my-bio').style.color = 'var(--dark-fg)';
 		}
 		dmcounter++
 }
 
 darkModeBtn.addEventListener('click',darkMode);
-
+darkMode();
 
 // hover & active effect
 
 
 	// links hover
-const linkHoverColor = 'royalblue';
+const linkHoverColor = '#FF0000';
 projectsLinks.forEach(linkElement => {
 	linkElement.addEventListener('pointerenter', event =>{
 		event.target.style.color = linkHoverColor;
@@ -135,10 +135,11 @@ projectsLinks.forEach(linkElement => {
 
 	// progress bars hover
 	
-	document.querySelectorAll('div.progress-div').forEach(progressDivElement => {
-		progressDivElement.addEventListener('pointerenter', event => {addAnimationToProgressTitle(event)});
-		progressDivElement.addEventListener('pointerout', event => { removeAnimationToProgressTitle(event)});
-	})
+document.querySelectorAll('div.progress-div').forEach(progressDivElement => {
+	progressDivElement.addEventListener('pointerenter', event => {addAnimationToProgressTitle(event)});
+	progressDivElement.addEventListener('pointerout', event => { removeAnimationToProgressTitle(event)});
+})
+
 
 function addAnimationToProgressTitle(event) {
 	let progressDivElement = event.target;
@@ -168,12 +169,12 @@ function removeAnimationToProgressTitle(event) {
 	document.querySelectorAll('audio').forEach(audioElement => {
 		audioElement.addEventListener('play', event => {
 			// event.target.style.background = 'none';
-			event.target.parentElement.style.borderLeftColor = 'royalblue';
-			// event.target.previousElementSibling.style.color = 'rgb(30,30,30)';
+			event.target.parentElement.style.borderLeftColor = 'var(--dark-playing-border-color)';
+			event.target.previousElementSibling.style.color = 'var(--dark-playing-border-color)';
 		})
 		audioElement.addEventListener('pause', event => {
 			// event.target.style.background = 'rgb(30,30,30)';
-			event.target.parentElement.style.borderLeftColor = 'darkred';
-			// event.target.previousElementSibling.style.color = 'unset';
+			event.target.parentElement.style.borderLeftColor = 'var(--dark-main-border-color)';
+			event.target.previousElementSibling.style.color = (darkModeBtn.innerHTML == 'DM')? 'var(--dark-fg)': 'var(--light-fg)';
 		})
 	})
