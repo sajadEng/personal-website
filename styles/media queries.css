@@ -19,6 +19,9 @@
 	}
 }
 @media only screen and (max-width: 420px) {
+	:root {
+		--space-between-title-container: -50px;
+	}
 	div.profile-div div.about-me-div a.about-me-a {
 		max-width: 60px;
 	}
@@ -44,7 +47,7 @@
 	}
 	h1.progress-div-title {
 		font-size: 1.6rem;
-		top: -55px;
+		top: var(--space-between-title-container);
 	}
 	p.progress-title {
 		font-size: 1rem;
@@ -53,7 +56,7 @@
 		/* fav musix */
 	.fav-musix-title {
 		font-size: 1.6rem;
-		top: -55px;
+		top: var(--space-between-title-container);
 	}
 }
 @media only screen and (max-width: 400px) {

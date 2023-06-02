@@ -4,8 +4,98 @@ const container = document.querySelector('div.container');
 const footer = document.querySelector('footer');
 const contentDiv = document.querySelector('div.content-div');
 const clockText = document.querySelector('p.clock-text');
-const darkModeBtn = document.querySelector('.dark-mode-btn');
 const projectsLinks = document.querySelectorAll('a.content-link');
+
+
+
+// theme changing
+
+
+const themes = {
+	'blue': {
+		'--main-color': 'blue',
+		'--box-color': 'royalblue',
+		'--under-texts-bottom-color': 'aqua',
+		'--left-texts-color': 'aqua',
+		'--main-fg': 'white'
+	},
+	'yellow': {
+		'--main-color': 'yellow',
+		'--box-color': '#DC3535',
+		'--under-texts-bottom-color': '#B01E68',
+		'--left-texts-color': '#B01E68',
+		'--main-fg': 'black'
+	},
+	'green': {
+		'--main-color': 'green',
+		'--box-color': 'forestgreen',
+		'--under-texts-bottom-color': '#000',
+		'--left-texts-color': '#000',
+		'--main-fg': 'black'
+	},
+	'red': {
+		'--main-color': 'crimson',
+		'--box-color': '#950101',
+		'--under-texts-bottom-color': 'white',
+		'--left-texts-color': 'white',
+		'--main-fg': 'white'
+	},
+	'dark': {
+		'--main-color': 'black',
+		'--box-color': 'rgb(30,30,30)',
+		'--under-texts-bottom-color': 'whitesmoke',
+		'--left-texts-color': 'whitesmoke',
+		'--main-fg': 'white'
+	},
+	'light': {
+		'--main-color': 'whitesmoke',
+		'--box-color': 'rgb(220,220,220)',
+		'--under-texts-bottom-color': 'rgb(30,30,30)',
+		'--left-texts-color': 'rgb(30,30,30)',
+		'--main-fg': 'rgb(30,30,30)'
+	}
+}
+const colroThemebtns = document.querySelectorAll('.color-theme');
+var theme;
+firstTheme('yellow');
+colroThemebtns.forEach(themeChangeBtn => {
+	themeChangeBtn.addEventListener('click', event => {changeTheme(event)})
+})
+
+
+function firstTheme(startingTheme) {
+	colroThemebtns.forEach(btn => {
+		if (btn.classList.contains('active-theme'))
+			btn.classList.remove('active-theme');
+	})
+	theme = startingTheme;
+	document.querySelectorAll('div.color-theme').forEach(themeDiv => {
+		if (themeDiv.innerHTML == theme)
+			themeDiv.classList.add('active-theme');
+	})
+	document.documentElement.style.setProperty('--main-color', themes[theme]['--main-color']);
+	document.documentElement.style.setProperty('--box-color', themes[theme]['--box-color']);
+	document.documentElement.style.setProperty('--under-texts-bottom-color', themes[theme]['--under-texts-bottom-color']);
+	document.documentElement.style.setProperty('--left-texts-color', themes[theme]['--left-texts-color']);
+	document.documentElement.style.setProperty('--main-fg', themes[theme]['--main-fg']);
+}
+function changeTheme (event) {
+	if (theme != event.target.innerHTML) {
+		colroThemebtns.forEach(btn => {
+			if (btn.classList.contains('active-theme'))
+				btn.classList.remove('active-theme');
+		})
+		theme = event.target.innerHTML;
+		event.target.classList.add('active-theme');
+		body.classList.add('body-change-theme');
+		document.documentElement.style.setProperty('--main-color', themes[theme]['--main-color']);
+		document.documentElement.style.setProperty('--box-color', themes[theme]['--box-color']);
+		document.documentElement.style.setProperty('--under-texts-bottom-color', themes[theme]['--under-texts-bottom-color']);
+		document.documentElement.style.setProperty('--left-texts-color', themes[theme]['--left-texts-color']);
+		document.documentElement.style.setProperty('--main-fg', themes[theme]['--main-fg']);
+	}
+}
+
 
 
 // giving right links to a elements
@@ -49,106 +139,34 @@ cSSprogressBar.style.background = `conic-gradient(${cSSProgressColor} ${cSSProgr
 cSSPercntegeText.style.color = cSSProgressColor;
 cSSPercntegeText.innerHTML = cSSProgressPercentage + '%';
 
-
-
-
-
-
-// dark mode
-var dmcounter = 0;
-function darkMode() {
-	if (darkModeBtn.innerHTML == "DM") {
-		darkModeBtn.style.color = 'var(--fg2)';
-		body.style.background = 'whitesmoke';
-		document.querySelector('h1.my-name').style.color = 'var(--fg2)';
-		document.querySelector('p.content-div-title').style.color = 'var(--fg2)';
-		document.querySelector('p.my-bio').style.color = 'var(--fg2)';
-		document.querySelector('h1.progress-div-title').style.color = 'var(--fg2)';
-		document.querySelectorAll('p.progress-title').forEach( pText => {
-			pText.style.color = 'var(--fg2)';
-		})
-		document.querySelector('div.progreses-container').style.background = 'rgb(230,230,230)';
-		for (let i = 0; i < document.querySelectorAll('p.content-title').length; i++) {
-			document.querySelectorAll('p.content-title')[i].style.color = 'var(--fg2)';
-			document.querySelectorAll('a.content-link')[i].style.color = 'var(--fg2)';
-			document.querySelectorAll('div.content')[i].style.background = 'var(--wbg3)';
-			document.querySelectorAll('div.content')[i].style.borderBottom = '3px darkred solid';
-		}
-		document.querySelector('.fav-musix-title').style.color = 'var(--fg2)';
-		document.querySelectorAll('.musix').forEach(musicDiv => {
-			musicDiv.children[0].style.color = 'var(--fg2)';
-		})
-		darkModeBtn.innerHTML = "WM";
-		console.log('ee');
-		} else {
-			body.style.background = 'black';
-			darkModeBtn.style.color = 'var(--fg1)';
-			document.querySelector('h1.my-name').style.color = 'var(--fg1)';
-			document.querySelector('p.content-div-title').style.color = 'var(--fg1)';
-			document.querySelector('p.my-bio').style.color = 'var(--fg2)';
-			document.querySelector('h1.progress-div-title').style.color = 'var(--fg1)';
-			document.querySelector('div.progreses-container').style.background = 'rgb(30,30,30)';
-			document.querySelectorAll('p.progress-title').forEach( pText => {
-				pText.style.color = 'var(--fg1)';
-			})
-			for (let i = 0; i < document.querySelectorAll('p.content-title').length; i++) {
-				document.querySelectorAll('p.content-title')[i].style.color = 'var(--fg1)';
-				document.querySelectorAll('a.content-link')[i].style.color = 'var(--fg1)';
-				document.querySelectorAll('div.content')[i].style.background = 'var(--bg3)';
-				document.querySelectorAll('div.content')[i].style.borderBottom = '0px darkred solid';
-			}
-			document.querySelector('.fav-musix-title').style.color = 'var(--fg1)';
-			document.querySelectorAll('.musix').forEach(musicDiv => {
-				musicDiv.children[0].style.color = 'var(--fg1)';
-			})
-			darkModeBtn.innerHTML = "DM";
-			console.log('ww');
-		}
-		if (dmcounter % 2 === 0) {
-			document.querySelector('.my-bio').style.color = 'var(--fg2)';
-		} else {
-			document.querySelector('.my-bio').style.color = 'var(--fg1)';
-		}
-		dmcounter++
-}
-
-darkModeBtn.addEventListener('click',darkMode);
-
-
 // hover & active effect
 
 
 	// links hover
-const linkHoverColor = 'royalblue';
+const linkHoverColor = 'aqua';
 projectsLinks.forEach(linkElement => {
 	linkElement.addEventListener('pointerenter', event =>{
 		event.target.style.color = linkHoverColor;
-		console.table(event);
 	})
 	linkElement.addEventListener('pointerout', event =>{
-		const linkMainColor = (darkModeBtn.innerHTML == 'WM')? 'rgb(30,30,30)' : 'whitesmoke';
-		event.target.style.color = linkMainColor;
-		console.table(event);
+		event.target.style.color = 'var(--main-fg)';
 	})
 })
 
 
 	// progress bars hover
 	
-	document.querySelectorAll('div.progress-div').forEach(progressDivElement => {
-		progressDivElement.addEventListener('pointerenter', event => {addAnimationToProgressTitle(event)});
-		progressDivElement.addEventListener('pointerout', event => { removeAnimationToProgressTitle(event)});
-	})
+document.querySelectorAll('div.progress-div').forEach(progressDivElement => {
+	progressDivElement.addEventListener('pointerenter', event => {addAnimationToProgressTitle(event)});
+	progressDivElement.addEventListener('pointerout', event => { removeAnimationToProgressTitle(event)});
+})
+
 
 function addAnimationToProgressTitle(event) {
 	let progressDivElement = event.target;
-	if (darkModeBtn.innerHTML == 'WM') {
-		progressDivElement.classList.add('fire-anim-1');
-		progressDivElement.classList.remove('fire-anim-2');
-	} else {
-		progressDivElement.classList.add('fire-anim-2');
-		progressDivElement.classList.remove('fire-anim-1');
-	}
+	progressDivElement.classList.remove('scale-up-anim');
+	progressDivElement.classList.remove('fire-anim-2');
+	progressDivElement.classList.add('fire-anim-1');
 	progressDivElement.children[0].classList.add('paint-anim');
 }
 
@@ -168,12 +186,50 @@ function removeAnimationToProgressTitle(event) {
 	document.querySelectorAll('audio').forEach(audioElement => {
 		audioElement.addEventListener('play', event => {
 			// event.target.style.background = 'none';
-			event.target.parentElement.style.borderLeftColor = 'royalblue';
-			// event.target.previousElementSibling.style.color = 'rgb(30,30,30)';
+			event.target.parentElement.style.borderLeftColor = 'var(--playing-song-border-color)';
+			event.target.previousElementSibling.style.color = 'var(--playing-song-title-color)';
 		})
 		audioElement.addEventListener('pause', event => {
 			// event.target.style.background = 'rgb(30,30,30)';
-			event.target.parentElement.style.borderLeftColor = 'darkred';
-			// event.target.previousElementSibling.style.color = 'unset';
+			event.target.parentElement.style.borderLeftColor = 'var(--left-texts-color)';
+			event.target.previousElementSibling.style.color = 'var(--main-fg)';
 		})
 	})
+
+
+
+// appear on scroll
+const songBoxes = document.querySelectorAll('.musix');
+const contentBoxes = document.querySelectorAll('.content');
+const progresContainer = document.querySelector('.progreses-container');
+const profileDiv = document.querySelector('.profile-div');
+appearOnScroll();
+window.addEventListener('scroll', appearOnScroll);
+function appearOnScroll() {
+	const triggerBottom = window.innerHeight;
+	profileDiv.classList.add('scale-up-anim');
+	contentBoxes.forEach(contentChild => {
+		if (contentChild.getBoundingClientRect().top < triggerBottom) {
+			contentChild.classList.add('scale-up-anim');
+			contentChild.style.marginTop = '0';
+
+		}
+	})
+	// if (contentDiv.getBoundingClientRect().top < triggerBottom) {
+		if (document.querySelector('.fav-musix').getBoundingClientRect().top < triggerBottom) {
+			songBoxes.forEach(musixChild => {
+				if (musixChild.getBoundingClientRect().top < triggerBottom) {
+					musixChild.style.marginTop= '0';
+					musixChild.children[0].classList.add('scale-up-anim')
+				}
+			})
+		}
+	// }
+	if (progresContainer.getBoundingClientRect().top < triggerBottom) {
+		// progresContainer.style.columnGap = '0';
+		document.querySelectorAll('.progreses-container p.progress-title').forEach(progressTitleText => {
+			progressTitleText.classList.add('scale-up-anim');
+			progressTitleText.nextElementSibling.classList.add('scale-up-anim');
+		})
+	}
+}
