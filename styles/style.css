@@ -88,7 +88,7 @@ body {
 	border-top-right-radius: var(--color-theme-top-border-radius);
 	position: relative;
 }
-.color-theme-blue.active-theme ~ .color-theme-yellow {
+.color-theme-blue.active-theme ~ .color-theme-green {
 	margin-left: var(--negative-color-theme-top-border-radius);
 	z-index: -1;
 }
