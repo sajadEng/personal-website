@@ -17,6 +17,7 @@ const themes = {
 		'--box-color': 'royalblue',
 		'--under-texts-bottom-color': 'aqua',
 		'--left-texts-color': 'aqua',
+		'--playing-song-color': 'black',
 		'--main-fg': 'white'
 	},
 	'yellow': {
@@ -24,6 +25,7 @@ const themes = {
 		'--box-color': '#DC3535',
 		'--under-texts-bottom-color': '#B01E68',
 		'--left-texts-color': '#B01E68',
+		'--playing-song-color': 'crimson',
 		'--main-fg': 'black'
 	},
 	'green': {
@@ -31,6 +33,7 @@ const themes = {
 		'--box-color': 'forestgreen',
 		'--under-texts-bottom-color': '#000',
 		'--left-texts-color': '#000',
+		'--playing-song-color': 'white',
 		'--main-fg': 'black'
 	},
 	'red': {
@@ -38,6 +41,7 @@ const themes = {
 		'--box-color': '#950101',
 		'--under-texts-bottom-color': 'white',
 		'--left-texts-color': 'white',
+		'--playing-song-color': 'black',
 		'--main-fg': 'white'
 	},
 	'dark': {
@@ -45,6 +49,7 @@ const themes = {
 		'--box-color': 'rgb(30,30,30)',
 		'--under-texts-bottom-color': 'whitesmoke',
 		'--left-texts-color': 'whitesmoke',
+		'--playing-song-color': 'crimson',
 		'--main-fg': 'white'
 	},
 	'light': {
@@ -52,19 +57,20 @@ const themes = {
 		'--box-color': 'rgb(220,220,220)',
 		'--under-texts-bottom-color': 'rgb(30,30,30)',
 		'--left-texts-color': 'rgb(30,30,30)',
+		'--playing-song-color': 'crimson',
 		'--main-fg': 'rgb(30,30,30)'
 	}
 }
-const colroThemebtns = document.querySelectorAll('.color-theme');
+const colorThemeBtns = document.querySelectorAll('.color-theme');
 var theme;
-firstTheme('yellow');
-colroThemebtns.forEach(themeChangeBtn => {
+firstTheme('light');
+colorThemeBtns.forEach(themeChangeBtn => {
 	themeChangeBtn.addEventListener('click', event => {changeTheme(event)})
 })
 
 
 function firstTheme(startingTheme) {
-	colroThemebtns.forEach(btn => {
+	colorThemeBtns.forEach(btn => {
 		if (btn.classList.contains('active-theme'))
 			btn.classList.remove('active-theme');
 	})
@@ -77,11 +83,12 @@ function firstTheme(startingTheme) {
 	document.documentElement.style.setProperty('--box-color', themes[theme]['--box-color']);
 	document.documentElement.style.setProperty('--under-texts-bottom-color', themes[theme]['--under-texts-bottom-color']);
 	document.documentElement.style.setProperty('--left-texts-color', themes[theme]['--left-texts-color']);
+	document.documentElement.style.setProperty('--playing-song-color', themes[theme]['--playing-song-color']);
 	document.documentElement.style.setProperty('--main-fg', themes[theme]['--main-fg']);
 }
 function changeTheme (event) {
 	if (theme != event.target.innerHTML) {
-		colroThemebtns.forEach(btn => {
+		colorThemeBtns.forEach(btn => {
 			if (btn.classList.contains('active-theme'))
 				btn.classList.remove('active-theme');
 		})
@@ -91,7 +98,7 @@ function changeTheme (event) {
 		document.documentElement.style.setProperty('--main-color', themes[theme]['--main-color']);
 		document.documentElement.style.setProperty('--box-color', themes[theme]['--box-color']);
 		document.documentElement.style.setProperty('--under-texts-bottom-color', themes[theme]['--under-texts-bottom-color']);
-		document.documentElement.style.setProperty('--left-texts-color', themes[theme]['--left-texts-color']);
+		document.documentElement.style.setProperty('--left-texts-color', themes[theme]['--left-texts-color']);document.documentElement.style.setProperty('--playing-song-color', themes[theme]['--playing-song-color']);
 		document.documentElement.style.setProperty('--main-fg', themes[theme]['--main-fg']);
 	}
 }
@@ -182,12 +189,12 @@ function removeAnimationToProgressTitle(event) {
 
 
 
-// fav musix
+// playing song play event
 	document.querySelectorAll('audio').forEach(audioElement => {
 		audioElement.addEventListener('play', event => {
 			// event.target.style.background = 'none';
-			event.target.parentElement.style.borderLeftColor = 'var(--playing-song-border-color)';
-			event.target.previousElementSibling.style.color = 'var(--playing-song-title-color)';
+			event.target.parentElement.style.borderLeftColor = 'var(--playing-song-color)';
+			event.target.previousElementSibling.style.color = 'var(--playing-song-color)';
 		})
 		audioElement.addEventListener('pause', event => {
 			// event.target.style.background = 'rgb(30,30,30)';

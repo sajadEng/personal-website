@@ -13,9 +13,9 @@
 	--fire-anim-color-2: yellow;
 	--playing-song-title-color: yellow;
 	--playing-song-border-color: yellow;
+	--playing-song-color: crimson;
 	--color-theme-top-border-radius: 12px;
 	--negative-color-theme-top-border-radius: -12px;
-
 
 	/* otheer sizeing */
 	--space-between-title-container: -70px;
@@ -30,6 +30,10 @@
 	color: var(--fg1);
 	transition: all 150ms;
 /*	background-color: forestgreen;*/
+}
+*::selection {
+	color: var(--main-color);
+	background: var(--main-fg);
 }
 body {
 	display: flex;
@@ -53,7 +57,6 @@ body {
 	right: 0;
 	height: 50px;
 	display: flex;
-/*	grid-template-columns: repeat(6, 1fr);*/
 	z-index: 1000000;
 }
 .color-theme {
@@ -173,6 +176,8 @@ div.profile-div div.about-me-div a.about-me-a img {
 	transition: all 50ms;
 }
 
+
+/* projects */
 div.content-div {
 	display: flex;
 	flex-direction: column;
@@ -201,7 +206,7 @@ div.content {
 	flex-direction: column;
 	justify-content: start;
 	padding: 20px 0 20px 20px;
-	font-family: monospace;
+	font-family: sans-serif;
 	margin-top: 50px;
 	transition: margin-top 1s;
 }
@@ -209,6 +214,9 @@ div.content p.content-title {
 	font-size: 2rem;
 	margin-top: 0;
 	margin-bottom: 10px;
+}
+.content-link {
+	font-family: monospace;
 }
 
 
