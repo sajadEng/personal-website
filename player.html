@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style type="text/css">
+		.audio {
+			width: 100%;
+			max-width: 900px;
+			height: 20px;
+			background: black;
+			color: white;
+			display: flex;
+			align-items: center;
+		}
+		.audio__playpause-btn {
+			background: none;
+			border: none;
+			color: white;
+			width: 20px;
+		}
+		.cur_dur-time {
+			display: flex;
+			align-items: center;
+		}
+		label[for="track time"] {
+			flex: 5;
+		}
+		label[for="track time"] input {
+			width: 100%;
+		}
+		.cur_dur-time {
+			width: 11ch;
+		}
+		label[for="vol seek"] input {
+			width: 50px;
+		}
+	</style>
+	<title>player</title>
+</head>
+<body>
+	<div class="audio">
+		<audio>
+			<source src="musix/08 -  Fistful of Steel.mp3" type="">
+		</audio>
+		<button class="audio__playpause-btn"><></button>
+		<svg fill="black" width="15px" height="15px"></svg>
+		<label for="track time">
+			<input type="range" name="track time">
+		</label>
+		<span class="cur_dur-time">
+			<p class="cur-time">00:00</p>/<p class="dur-time">00:00</p>
+		</span>
+		<svg fill="black" width="15px" height="15px"></svg>
+		<label for="vol seek">
+			<input type="range" name="vol seek">
+		</label>
+	</div>
+
+
+	<script type="text/javascript">
+		const playpauseBtns = document.querySelectorAll('.audio__playpause-btn');
+		playpauseBtns.forEach(playpauseBtn => {
+			let thisAudio = playpauseBtn.parentElement.children[0];
+			thisAudio.isPlaying = false;
+			playpauseBtn.addEventListener('click', event => {
+				if (thisAudio.isPlaying) {
+					thisAudio.pause();
+					thisAudio.isPlaying = false; 
+				} else {
+					thisAudio.play(); 
+					thisAudio.isPlaying = true;
+				}
+			})
+		})
+
+		const seekTimers = document.querySelectorAll('input[name="track time"]');
+		seekTimers.forEach(seekTimer => {
+			let thisAudio = seekTimer.parentElement.parentElement.children[0];
+			seekTimer.addEventListener('input' , event => {
+				// thisAudio.currentTime = seekTimer.value;
+				thisAudio.currentTime = seekTimer.value * (thisAudio.duration / 100);	
+			})
+		})
+
+		const audios = document.querySelectorAll('audio');
+		// audios.forEach(audio => {
+			// let minutes = Math.floor(audio.duration/60);
+			// console.log(audio.duration);
+			// audio.parentElement.children[4].children[1].innerHTML = `${minutes}:${Math.floor(audio.duration - (minutes * 60))}`;
+			// audio.addEventListener('timeupdate', event => {
+			// 	audio.parentElement.children[3].children[0].value = audio.currentTime / (audio.duration / 100);
+			// 	minutes = Math.floor(audio.currentTime/60);
+			// 	audio.parentElement.children[4].children[0].innerHTML = `${minutes}:${Math.floor(audio.currentTime - (minutes * 60))}`;
+			// })
+		// })
+		console.table(audios);
+		console.log(audios[0]['duration'])
+	</script>
+</body>
+</html>
